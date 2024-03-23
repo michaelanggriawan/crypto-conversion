@@ -25,9 +25,9 @@ function Calculator(): JSX.Element {
     (e: ChangeEvent<HTMLInputElement>) => {
       setBaseAmount(+e.target.value);
       if (action === "base-crypto") {
-        setTargetAmount(+(+e.target.value * prices).toFixed(2));
+        setTargetAmount(+(+e.target.value * prices).toFixed(4));
       } else {
-        setTargetAmount(+(+e.target.value / prices).toFixed(2));
+        setTargetAmount(+(+e.target.value / prices).toFixed(4));
       }
     },
     [prices, action],
@@ -37,9 +37,9 @@ function Calculator(): JSX.Element {
     (e: ChangeEvent<HTMLInputElement>) => {
       setTargetAmount(+e.target.value);
       if (action === "base-crypto") {
-        setBaseAmount(+(+e.target.value / prices).toFixed(2));
+        setBaseAmount(+(+e.target.value / prices).toFixed(4));
       } else {
-        setBaseAmount(+(+e.target.value * prices).toFixed(2));
+        setBaseAmount(+(+e.target.value * prices).toFixed(4));
       }
     },
     [prices, action],
@@ -66,9 +66,9 @@ function Calculator(): JSX.Element {
   //       setPrices(currPrice);
   
   //       if (action === "base-crypto") {
-  //         setTargetAmount(+(+baseAmount / currPrice).toFixed(2));
+  //         setTargetAmount(+(+baseAmount / currPrice).toFixed(4));
   //       } else {
-  //         setBaseAmount(+(+targetAmount * currPrice).toFixed(2));
+  //         setBaseAmount(+(+targetAmount * currPrice).toFixed(4));
   //       }
   //     }
   //   } catch (err) {
@@ -109,7 +109,7 @@ function Calculator(): JSX.Element {
           const response = await getPrices({ ids: e.target.value.toLowerCase(), currency: currency.symbol }).unwrap();
           const currPrice = response.data[e.target.value][currency.symbol] as unknown as number
           setPrices(currPrice);
-          setBaseAmount(+(+targetAmount / currPrice).toFixed(2))
+          setBaseAmount(+(+targetAmount / currPrice).toFixed(4))
           
         }
       } catch (err) {
@@ -130,7 +130,7 @@ function Calculator(): JSX.Element {
           const response = await getPrices({ ids: e.target.value.toLowerCase(), currency: currency.symbol }).unwrap();
           const currPrice = response.data[e.target.value][currency.symbol] as unknown as number;
           setPrices(currPrice);
-          setTargetAmount(+(+baseAmount / currPrice).toFixed(2))
+          setTargetAmount(+(+baseAmount / currPrice).toFixed(4))
         }
       } catch (err) {
         alert(`error: ${JSON.stringify(err)}`)
@@ -150,12 +150,12 @@ function Calculator(): JSX.Element {
 
   if (isLoading) {
     return (
-      <div className="px-2 md:px-5 pt-7 pb-4 w-full mx-auto animate-pulse">
+      <div className="px-4 md:px-5 pt-7 pb-4 w-full mx-auto animate-pulse">
         <div className="space-y-4">
           <div className="h-10 bg-slate-700 rounded"></div>
           <div className="h-10 bg-slate-700 rounded"></div>
         </div>
-        <div className="flex justify-between flex-row space-x-20 mt-4">
+        <div className="flex justify-between flex-row space-x-40 mt-4">
           <div className="h-5 bg-slate-700 rounded w-full"></div>
           <div className="h-5 bg-slate-700 rounded w-full"></div>
         </div>
@@ -164,7 +164,7 @@ function Calculator(): JSX.Element {
   }
 
   return (
-    <div className="px-2 md:px-5 pt-7 pb-4">
+    <div className="px-4 md:px-5 pt-7 pb-4">
       <div className="mb-4">
         <InputGroup
           name="baseAmount"
@@ -194,7 +194,7 @@ function Calculator(): JSX.Element {
       </div>
 
       <div className="flex flex-col md:flex-row md:justify-between items-center text-xs text-slate-500">
-        <p>1 {baseCrypto} equals {action === "base-crypto" ? prices.toFixed(2) : (1 / prices).toFixed(2) } {targetCrypto}</p>
+        <p>1 {baseCrypto} equals {action === "base-crypto" ? prices.toFixed(4) : (1 / prices).toFixed(4) } {targetCrypto}</p>
       </div>
     </div>
   );
