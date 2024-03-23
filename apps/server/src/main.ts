@@ -34,9 +34,9 @@ async function bootstrap() {
   app.useGlobalFilters(new AllExceptionFilter(app.get(Logger)));
   app.useGlobalInterceptors(new HttpSuccessInterceptor());
   app.enableCors({
-    allowedHeaders:"*",
-    origin: "*"
-});
+    allowedHeaders: '*',
+    origin: '*',
+  });
   const configService = app.get(ConfigService);
 
   // Swagger
