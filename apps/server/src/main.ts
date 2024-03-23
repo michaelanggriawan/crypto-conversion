@@ -33,7 +33,10 @@ async function bootstrap() {
   app.useGlobalPipes(new ValidationPipe());
   app.useGlobalFilters(new AllExceptionFilter(app.get(Logger)));
   app.useGlobalInterceptors(new HttpSuccessInterceptor());
-  app.enableCors();
+  app.enableCors({
+    allowedHeaders:"*",
+    origin: "*"
+});
   const configService = app.get(ConfigService);
 
   // Swagger
