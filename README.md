@@ -45,6 +45,9 @@ npm run test:e2e --prefix apps/server
 5. Access swagger
 http://localhost:3001/v1/crypto-exchanges/docs
 
+6. Access the app
+http://localhost:3000
+
 ## Run the app via docker
 
 ```bash
