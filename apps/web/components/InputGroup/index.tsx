@@ -14,13 +14,14 @@ export default function InputGroup({
     <>
       <div className="relative mt-1 rounded-md shadow-sm">
         <input
-          type="text"
+          type="number"
           name={name}
           className="block w-full rounded-md border-gray-300 pl-3 pr-12 focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
           placeholder="0.00"
           value={value}
           onChange={onChange}
           autoComplete="off"
+          inputMode="numeric"
         />
         <div className="absolute inset-y-0 right-0 flex items-center">
           <label className="sr-only">Currency</label>
